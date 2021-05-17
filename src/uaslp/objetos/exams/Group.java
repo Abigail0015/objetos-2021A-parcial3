@@ -5,12 +5,14 @@ public class Group
     private List<Student> students = new ArrayList<>();
     private int capacity;
     private int availability;
+    private double average;
 
     public Group(int capacity)
     {
 
         this.capacity = capacity;
         availability = 0;
+        average = 0.0;
     }
 
     public int getCapacity()
@@ -28,6 +30,8 @@ public class Group
     {
         return students;
     }
+
+
     public List<Student> addStudent(Student student)
     {
         if(capacity > availability)
@@ -38,5 +42,8 @@ public class Group
         {
             throw new GroupIsFullException();
         }
+    }
+
+    public double getAverage() {
     }
 }

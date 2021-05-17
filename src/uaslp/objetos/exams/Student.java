@@ -3,14 +3,14 @@ package uaslp.objetos.exams;
 public class Student
 {
    private String name;
-   private int key;
+   private int code;
    private int score[][];
    double average;
 
    public Student(String name, int key)
    {
       this.name = name;
-      this.key = key;
+      this.code = key;
       score = new int [3][2];
       average = 0.0;
    }
@@ -29,5 +29,14 @@ public class Student
          average = average + score[i][1];
       }
       return average;
+   }
+
+   public String getName()
+   {
+      return name;
+   }
+
+   public int getCode() {
+      return code;
    }
 }
