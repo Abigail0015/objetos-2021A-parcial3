@@ -4,30 +4,36 @@ public class Student
 {
    private String name;
    private int code;
-   private int score[][];
-   double average;
+   private Integer score[];
+
 
    public Student(String name, int key)
    {
       this.name = name;
       this.code = key;
-      score = new int [3][2];
-      average = 0.0;
+      score = new Integer[3];
+
    }
 
    public void setScore(int partial, int score)
    {
-      this.score[partial-1][0] = partial;
-      this.score[partial -1][1] = score;
+      if (partial > 3)
+           throw new InvalidPartialException();
+      this.score[partial -1] = score;
    }
 
-   public double getAverage()
+   public double getAverage() throws MissingScoreException
    {
-      average =0;
+      double average = 0;
       for(int i = 0;i < 3; i++)
       {
-         average = average + score[i][1];
+         if(score[i] == null)
+            throw new MissingScoreException("Missing partial "+ (i + 1));
+
+         average = average + score[i];
       }
+      average = average / 3;
+
       return average;
    }
 
